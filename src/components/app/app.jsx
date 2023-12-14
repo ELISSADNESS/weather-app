@@ -4,7 +4,7 @@ import '@mantine/carousel/styles.css';
 import { Carousel } from '@mantine/carousel';
 
 
-const API = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&start_date=2023-12-10&end_date=2023-12-12"
+const API = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&start_date=2023-12-13&end_date=2023-12-15"
 
 const checkReponse = (res) => {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -21,7 +21,7 @@ const sliderStyle = {
     slide: {
       border: '3px solid #fff',
       color: '#fff',
-      height: '50vh',
+      // height: '50vh',
       borderRadius: '20px',
       padding: '2rem',
       paddingLeft: '6rem',
@@ -71,7 +71,7 @@ function App() {
 
                 {index === 1 && (<p style={{ fontSize: '50px', fontWeight: '600' }}>{weather.data.current.temperature_2m}°C</p>)}
 
-                <p style={{ fontSize: '20px' }}>максимальная температура: {weather.data.daily.temperature_2m_max[index]}°C</p>
+                <p>максимальная температура: {weather.data.daily.temperature_2m_max[index]}°C</p>
                 <p>минимальная температура: {weather.data.daily.temperature_2m_min[index]}°C</p>
               </Carousel.Slide>
             ))
